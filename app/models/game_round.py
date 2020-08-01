@@ -1,7 +1,8 @@
-from player import Player
-from game_round import Game
-from random import random
-
+from app.models.player import Player
+from app.models.game import Game
+import random
+#from player import Player
+#from game import Game
 
 class GameRound:
     def __init__(self, player1, player2):
