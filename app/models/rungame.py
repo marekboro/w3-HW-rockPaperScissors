@@ -7,5 +7,5 @@ player_two = Player("")
 round_limit = 1
 gamename = ""
 
-the_game = Game(player_one,player_two,round_limit,gamename)
+the_game = Game(player_one,player_two,round_limit,gamename,0)
 
