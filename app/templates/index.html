@@ -1,10 +1,54 @@
-<!-- {% extends "core.html"ß %} -->
-
 <html>
-    <head>
-        <title>{{ title }} - My To-Do List</title>
-    </head>
-    <body>
-        <h1>My Todo List!</h1>
-    </body>
+
+<head>
+    <title> {{ title }} </title>
+</head>
+
+<body>
+    <h1>{{ game_name }}</h1>
+    <section>
+        <section id="options">
+            <form action="set game values" method="post">
+                <input type="text" value="Enter name of game">
+
+                <form>
+
+                    <label>Select number of roudns</label>
+                    <select id="myList">
+                        <option value="1">1</option>
+                        <option value="2">3</option>
+                        <option value="3">5</option>
+                        <option value="4">7</option>
+                    </select>
+
+                </form>
+
+                <input type="submit" value="Set up Game">
+            </form>
+
+        </section>
+
+        <form action="/rock/scissors" method="post">
+            <input type="submit" value="Rock">
+        </form>
+        <form action="/paper/scissors" method="post">
+            <input type="submit" value="Paper">
+        </form>
+        <form action="/scissors/scissors" method="post">
+            <input type="submit" value="Scissors">
+        </form>
+        <form action="/rock" method="post">
+            <input type="submit" name="rock" value="Rock 1">
+        </form>
+        <form action="" method="post">
+            <input type="submit" name="paper" value="Paper 2">
+        </form>
+        <form action="" method="post">
+            <input type="submit" name="scissors" value="Scissors 3">
+        </form>
+
+    </section>
+
+</body>
+
 </html>
