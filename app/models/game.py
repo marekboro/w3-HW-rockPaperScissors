@@ -26,6 +26,11 @@ class Game():
 
     def set_player_2(self, Player):
         self.player_2 = Player
+
+
+    def play_round(self):
+        pass
+
     
     
 
