@@ -1,54 +1,82 @@
-<html>
+{% extends "core.html" %}
 
-<head>
-    <title> {{ title }} </title>
-</head>
+{%block Game_and_encounter_names%}
+<div id="game_info">
+    <h2 id="TitleScreen">{{ this_game_name }}</h2>
+    <h4 id="TitleScreen">You chose to name your epic fight: </h4>
+    <h1 id="encounterName">{{encounter_name}}</h1>
+</div>
+{%endblock%}
 
-<body>
-    <h1>{{ game_name }}</h1>
-    <section>
-        <section id="options">
-            <form action="set game values" method="post">
-                <input type="text" value="Enter name of game">
+{%block gameSetup%}
+<section id="options">
+    <form id="setter" action="/setupgame" method="post">
+        <input type="text" name="newgamename" placeholder="Enter challege name:">
+        <input type="text" name="name1" placeholder="Enter player 1 name">
+        <input type="text" name="name2" placeholder="Enter player 2 name">
 
-                <form>
+        <label>Select rounds</label>
+        <select name='round_choice' id="myList">
+            <option value=999>choose</option>
+            <option value="1">1</option>
+            <option value="3">3</option>
+            <option value="5">5</option>
+            <option value="7">7</option>
+            <option value="11">11</option>
+            <option value="15">15</option>
+        </select>
+        <label> V.S: ?</label>
+        <select name='isNumber2AI' id="myList">
+            <option value="no">Human</option>
+            <option value="yes">Cyborg from the future</option>
+        </select>
+        <input type="submit" value="Confirm">
+    </form>
+    <form id="reset" action="/reset" method="post">
+        <input type="submit" value="Reset">
+    </form>
 
-                    <label>Select number of roudns</label>
-                    <select id="myList">
-                        <option value="1">1</option>
-                        <option value="2">3</option>
-                        <option value="3">5</option>
-                        <option value="4">7</option>
-                    </select>
+</section>
+{%endblock%}
 
-                </form>
-
-                <input type="submit" value="Set up Game">
-            </form>
-
-        </section>
-
-        <form action="/rock/scissors" method="post">
-            <input type="submit" value="Rock">
+{%block player_buttons%}
+<section id="game_GUI">
+    <section id="player1_area">
+        <!-- <h4>{{player_one_name}}</h4> -->
+        <form action="/p1-rock" method="post">
+            <input name="rock" type="submit" value="Rock">
         </form>
-        <form action="/paper/scissors" method="post">
-            <input type="submit" value="Paper">
+        <form action="/p1-paper" method="post">
+            <input name="paper" type="submit" value="Paper">
         </form>
-        <form action="/scissors/scissors" method="post">
-            <input type="submit" value="Scissors">
-        </form>
-        <form action="/rock" method="post">
-            <input type="submit" name="rock" value="Rock 1">
-        </form>
-        <form action="" method="post">
-            <input type="submit" name="paper" value="Paper 2">
-        </form>
-        <form action="" method="post">
-            <input type="submit" name="scissors" value="Scissors 3">
+        <form action="/p1-scissors" method="post">
+            <input name="scissors" type="submit" value="Scissors">
         </form>
 
     </section>
 
-</body>
+    <!-- <section id="player2_area">
+        <h4>{{player_two_name}}</h4>
+        <form action="/p2-rock" method="post">
+            <input type="submit" value="Rock">
+        </form>
+        <form action="/p2-paper" method="post">
+            <input type="submit" value="Paper">
+        </form>
+        <form action="/p2-scissors" method="post">
+            <input type="submit" value="Scissors">
+        </form>
 
-</html>
+    </section> -->
+</section>
+{%endblock%}
+
+{%block players%}
+<section id="display">
+
+    <!-- <h3 id="nomargin">Player 1: {{player_one_name}}</h3>
+    <h3 id="nomargin">Player 2: {{player_two_name}}</h3> -->
+    <h2 id="nomargin">Round: {{current_round}} of {{game_rounds}}, {{turnOfPlayer}} to move:</h2>
+
+</section>
+{%endblock%}

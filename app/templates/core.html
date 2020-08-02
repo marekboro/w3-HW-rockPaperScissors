@@ -1,12 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{url_for('static', filename='style.css') }}">
-    <title>Rock Paper Scissors</title>
+    <title>{{ title }}</title>
 </head>
+<header>
+
+</header>
+
 <body>
-    
+    <header>
+        {%block Game_and_encounter_names %}
+
+        {%endblock %}
+    </header>
+
+    <body>
+        {%block gameSetup %}
+        {%endblock %}
+
+        {%block players%}
+        {%endblock %}
+
+    </body>
+
+    <footer>
+        {%block player_buttons%}
+        {%endblock %}
+    </footer>
 </body>
+<footer>
+    <p>p1v's {{p1_rounds_won}}, p2v's {{p2_rounds_won}}, cycle: {{the_cycle}}, rnd: {{current_round}}, maxrnd {{game_rounds}}</p>
+    <p>winner is: {{winner}}</p>
+    <p> Choices logged in: p1 {{p1choice}}, p2 {{p2choice}}</p>
+    <p> can still be played? : {{game_can_continue}}</p>
+</footer>
+
 </html>
