@@ -3,7 +3,7 @@ import random
 class Player():
     def __init__(self, name,):
         self.name = name
-        self.choice = "empty"
+        self.choice = ""
         self.rounds_won = 0
         self.human_player = True
 
