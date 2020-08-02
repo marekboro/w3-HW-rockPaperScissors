@@ -47,29 +47,51 @@ class Game:
             return self.player_2
 
     def game_can_be_played(self):
-        if (self.player_1.rounds_won + self.player_1.rounds_won +1) <= self.max_rounds:
+        if (2*self.max_rounds - self.cycle) >= 1:
             return True
         else:
             return False
-        
+
+        # ----- CURRENT vertsion of this :
+        # if (self.player_1.rounds_won + self.player_1.rounds_won +1) <= self.max_rounds:
+        #     return True
+        # else:
+        #     return False
+        # ------
         # if self.cycle >= 2*self.max_rounds:
         #     return False
         # else:
         #     return True
 
-    def register_choice(
-        self, choice
-    ):  # decide whose choice is to be registered on button press.
-        can_take_values = 2 * int(self.max_rounds) - int(self.cycle)
-        if can_take_values > 0:
+    # decide whose choice is to be registered on button press.
+    def register_choice(self, choice):
+        if self.game_can_be_played():
+
             if self.whose_turn() == self.player_1:
                 self.player_1.choice = choice
                 self.cycle += 1
             elif self.whose_turn() == self.player_2:
                 self.player_2.choice = choice
                 self.cycle += 1
-        else:
-            pass
+
+    def AImoves(self):
+        if self.game_can_be_played():
+
+            if self.player_2.human_player == False:
+                self.player_2.choice = self.player_2.AImove()
+                self.cycle += 1
+            else:
+                pass
+
+                # if self.player_2.human_player:
+                #     self.player_2.choice = choice
+                #     self.cycle += 1
+                # else:
+                #     self.player_2.choice = self.player_2.AImove()
+                #     self.cycle += 1
+
+        # else:
+        #     pass
 
     def p1_wins(self):
         self.player_1.rounds_won += 1
@@ -81,30 +103,21 @@ class Game:
         self.player_1.choice = ""
         self.player_2.choice = ""
 
-    
-        #return int(self.cycle) <= 2*int(self.max_rounds)
+        # return int(self.cycle) <= 2*int(self.max_rounds)
         # if self.cycle >= 2 * self.max_rounds:
         #     return False
         # else:
         #     return True
 
     def play_round(self):
-        
-        
-        
-        
-        
-        
-        
+
         # if self.game_can_be_played():
         #     if self.player_1.choice == self.player_2.choice:
         #         pass
         #     if self.player_1.choice == "Rock" and self.player_2.choice == "Scissors":
         #         self.p1_wins()
-            
-        
-        
-        if self.game_can_be_played:
+
+        if self.game_can_be_played():
             if self.player_1.choice == "" or self.player_2.choice == "":
                 pass
             elif self.player_1.choice == "Rock" and self.player_2.choice == "Scissors":
@@ -117,15 +130,14 @@ class Game:
                 self.p2_wins()
 
     def announce_winner(self):
-        if self.game_can_be_played() ==False:
+        if self.game_can_be_played() == False:
             if self.player_1.rounds_won > self.player_2.rounds_won:
                 return self.player_1.name
             else:
                 return self.player_2.name
         else:
             return "unknown"
-        
-        
+
         # if (self.max_rounds - 2 * self.cycle) == 1:
         #     if self.player_1.rounds_won > self.player_2.rounds_won:
         #         return self.player_1.name
