@@ -133,8 +133,10 @@ class Game:
         if self.game_can_be_played() == False:
             if self.player_1.rounds_won > self.player_2.rounds_won:
                 return self.player_1.name
-            else:
+            if self.player_2.rounds_won > self.player_1.rounds_won:
                 return self.player_2.name
+            if self.player_2.rounds_won == self.player_1.rounds_won:
+                return "DRAW"       
         else:
             return "unknown"
 
